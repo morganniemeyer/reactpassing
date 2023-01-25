@@ -5,7 +5,12 @@ const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
   const [deck, setDeck] = useState(initialCards);
-  return <GameContext.Provider value={{ deck, setDeck }}>{children}</GameContext.Provider>;
+  const [selectedCard, setSelectedCard] = useState();
+  return (
+    <GameContext.Provider value={{ deck, setDeck, selectedCard, setSelectedCard }}>
+      {children}
+    </GameContext.Provider>
+  );
 };
 
 const useGameContext = () => {

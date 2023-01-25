@@ -47,9 +47,7 @@ function App() {
         <Player player={3} hand={playerThreeHand} />
         <CardList cards={deck} player={'deck'} />
       </section>
-      <section>
-        {selectedCard && <ExecutePassButton passCard={passCard} from={from} to={to} />}
-      </section>
+      <section>{selectedCard && <ExecutePassButton passCard={passCard} />}</section>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import './App.css';
-import initialCards from './cards-data';
 import Player from './components/Player';
 import CardList from './components/CardList';
 import { useState } from 'react';

@@ -7,11 +7,10 @@ import ExecutePassButton from './components/ExecutePassButton';
 import { useGameContext } from './context/GameContext.js';
 
 function App() {
-  const { deck, setDeck, selectedCard, setSelectedCard } = useGameContext();
+  const { deck, setDeck, selectedCard, setSelectedCard, from } = useGameContext();
   const [playerOneHand, setPlayerOneHand] = useState([]);
   const [playerTwoHand, setPlayerTwoHand] = useState([]);
   const [playerThreeHand, setPlayerThreeHand] = useState([]);
-  const [from, setFrom] = useState('deck');
   const [to, setTo] = useState(1);
 
   function findCardIndex(value, suit, cards) {
@@ -44,15 +43,13 @@ function App() {
     <div className="App">
       <section>
         {/* if the player names are numbers, that will make our life easier later because we can reuse numbers as arrays. Note that this will make our app brittle! */}
-        <Player to={to} player={1} hand={playerOneHand} setFrom={setFrom} setTo={setTo} />
-        <Player to={to} player={2} hand={playerTwoHand} setFrom={setFrom} setTo={setTo} />
-        <Player to={to} player={3} hand={playerThreeHand} setFrom={setFrom} setTo={setTo} />
-        <CardList cards={deck} setFrom={setFrom} player={'deck'} />
+        <Player to={to} player={1} hand={playerOneHand} setTo={setTo} />
+        <Player to={to} player={2} hand={playerTwoHand} setTo={setTo} />
+        <Player to={to} player={3} hand={playerThreeHand} setTo={setTo} />
+        <CardList cards={deck} player={'deck'} />
       </section>
       <section>
-        {selectedCard && (
-          <ExecutePassButton passCard={passCard} setFrom={setFrom} from={from} to={to} />
-        )}
+        {selectedCard && <ExecutePassButton passCard={passCard} from={from} to={to} />}
       </section>
     </div>
   );
